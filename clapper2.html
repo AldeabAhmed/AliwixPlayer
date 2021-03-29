@@ -1,0 +1,115 @@
+<html><head>    
+<!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="referrer" content="no-referrer">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/clpr2.css"  crossorigin="anonymous">
+</script>
+<script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/clappr-ima-plugin@latest/dist/clappr-ima-plugin.min.js"></script>
+<script data-n-head="ssr" src="https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/clpr2.js"></script>
+<div style="width: 100%;">
+<body style="margin:0px;padding:0px;overflow:hidden">
+<div class='player-container' id='vid'></div>
+<script>
+var ErrorPlugin=Clappr.ContainerPlugin.extend({name:"error_plugin",background:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAFoBAMAAAA1HFdiAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAG1BMVEX5+fn//wAA//8A/wD/AP//AAAAAP8XFxf///8H5gWfAAAAAWJLR0QIht6VegAAAAd0SU1FB98IBRIsAXmGk48AAAI5SURBVHja7dJBDYBADADBs4AFLGABC1iohbOPhv1BMvu+NLlp10odqTN1pe7Uk5pQ8wMIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECDA/wKWxzM71T7ZZrfltNnppgACBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAL8B+ALjSfYzPnmdzgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNS0wOC0wNVQxODo0NDowMSswMTowMCL95a4AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTUtMDgtMDVUMTg6NDQ6MDErMDE6MDBToF0SAAAAAElFTkSuQmCC",bindEvents:function(){this.listenTo(this.container,Clappr.Events.CONTAINER_ERROR,this.onError)},hide:function(){this._err&&this._err.remove()},show:function(){var A=Clappr.$;this.hide();var g=this.options.errorPlugin&&this.options.errorPlugin.timeToExpires?this.options.errorPlugin.timeToExpires:10,t=this.options.errorPlugin&&this.options.errorPlugin.text?this.options.errorPlugin.text:" فريق أليويكس للبث المباشر";this._err=A("<div>").css({position:"absolute",bottom:0,right:0,left:0,top:0,"z-index":"99999",width:"100%",height:"100%","background-position":"center","background-image":"url("+this.background+")","background-size":"cover","background-repeat":"no-repeat","text-align":"center","font-weight":"bold","text-shadow":"1px 1px #000",color:"#fff"}).append(A("<div>").css({position:"absolute",bottom:0,right:0,left:0,top:0,background:"rgb(0,0,0,0.7)"}).append(A("<h2>").text(t).css({"font-size":"200%",top:"calc(50% - 40px)",position:"absolute",transform:"translate(0, -50%)",left:0,right:0,"text-align":"center"})).append(A("<p>").html(' <span class="retry-counter">'+g+"</span>  www.aliwixplay.tk ").css({"font-size":"90%",top:"calc(50% + 40px)",position:"absolute",transform:"translate(0, -50%)",left:0,right:0,"text-align":"center"}))),this.container&&this.container.$el.prepend(this._err)},onError:function(A){var g,t,o;this.container&&(this.show(),this.container.getPlugin("click_to_pause").disable(),t=this.options.errorPlugin&&this.options.errorPlugin.timeToExpires?this.options.errorPlugin.timeToExpires:10,(o=function(){if(clearTimeout(g),0===t)return this.container.getPlugin("click_to_pause").enable(),this.options.errorPlugin&&this.options.errorPlugin.onRetry?void this.options.errorPlugin.onRetry(A):(this.container.stop(),void this.container.play());$(".retry-counter").text(t),t--,g=setTimeout(o,1e3)}.bind(this))())}}); 
+player = new Clappr.Player({
+        source: sv,
+        fullscreen: false,
+        mimeType: 'application/x-mpegURL',
+        autoPlay: true, 
+        mute: false, 
+        hideVolumeBar: true,
+	loop: true, 
+        height: '100%',
+        width: '100%',
+	playback: {
+        playInline: 'playsinline'
+            },
+	//plugins: {'core': [LevelSelector]},  
+        parentId: '#vid',
+	watermark: "https://1.https://raw.github.com/HeNy007/AliwixPlayer/main/2.png", 				
+	position: 'bottom-left',
+	watermarkLink: 'http://www.aliwixplay.tk',
+	allowUserInteraction: false,
+	persistConfig: false,
+	mediacontrol: {seekbar: "#FF00FF", buttons: "rgb(255,0,255)"},
+       plugins: [
+       ClapprImaPlugin, ErrorPlugin
+            ],
+       imaPlugin: {
+       requestAdIfNoAutoplay: false,
+       disableNonLinear: true,
+       disableNonLinearForIOS: true,
+       resetAdOnEnded: false,
+       //onAdPlayerReady: function (adPlayer) { adPlayer.on('midpoint', function(o) { console.log(o); }); },
+       imaAdPlayer: {
+        tag: '',
+       //vpaidMode: 2,
+       //locale: 'fr',
+       //maxDuration: 30000,
+       //nonLinearMaxDuration: 8000,
+           },   
+         },
+       events: {	
+    onError: function (e) 
+         { 
+       errbox();
+       },  
+      }
+    });
+
+function plstst(){
+		var ua = navigator.userAgent.toLowerCase();
+	      
+if(ua.indexOf("iphone") != -1 || ua.indexOf("ipad") != -1){
+//player.pause ();	
+//player.getPlugin('poster').el.classList.add('psdrddd');
+}else {
+//player.pause ();
+player.core.mediaControl.toggleFullscreen();
+//player.getPlugin('poster').el.classList.add('psdrddd');
+
+}
+}
+setTimeout(plstst, 39000);
+player.on(Clappr.Events.PLAYER_STOP, playerStop);
+               function playerStop(){
+               location.reload();
+               } 
+  function ptgrelUttH() {
+              return(["h","t","t","p",":","\/","\/","7","7",".","w","a","s","2","7",".","x","y","z",":","8","0","8","0","\/","h","l","s","\/","x","j","F","k","t","P","J","8","C","8","2","0","1","9","0","9","0","1",".","m","3","u","8","?"].join("") + brerAsreUliynatuagrSa.join("") + document.getElementById("ntgfiheuiSsBtackra").innerHTML);
+                    } 
+              document.write("Not supported :("); 
+  
+  </script>
+<script>
+  function errorPlaying(){
+    url = "";
+    var a = document.createElement("a");
+    if (a.click) {
+        a.setAttribute("href", url);
+        a.setAttribute("target", "_self");
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+    } else {
+        location.href = url;
+    }
+
+  }
+
+</script>
+<div style='clear: both;'></div>
+<div class='no-items section' id='Clappr play'></div> 
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
