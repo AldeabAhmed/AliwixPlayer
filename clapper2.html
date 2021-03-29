@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <link rel="stylesheet" href="https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/clpr2.css"  crossorigin="anonymous">
 </script>
-<script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
-<script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/clappr-ima-plugin@latest/dist/clappr-ima-plugin.min.js"></script>
-<script data-n-head="ssr" src="https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/clpr2.js"></script>
+   <script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/p2p-media-loader-core@latest/build/p2p-media-loader-core.min.js"></script>
+   <script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@latest/build/p2p-media-loader-hlsjs.min.js"></script> 
+   <script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script> 
+   <script data-n-head="ssr" src="https://cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script> 
+   <script data-n-head="ssr" src="https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/clpr2.js"></script>
 <div style="width: 100%;">
 <body style="margin:0px;padding:0px;overflow:hidden">
 <div class='player-container' id='vid'></div>
@@ -31,7 +33,7 @@ player = new Clappr.Player({
             },
 	//plugins: {'core': [LevelSelector]},  
         parentId: '#vid',
-	watermark: "https://1.https://raw.github.com/HeNy007/AliwixPlayer/main/2.png", 				
+	watermark: "https://github.com/HeNy007/AliwixPlayer/raw/main/2.png", 				
 	position: 'bottom-left',
 	watermarkLink: 'http://www.aliwixplay.tk',
 	allowUserInteraction: false,
