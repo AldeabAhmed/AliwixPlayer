@@ -1,0 +1,50 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Aliwix Video Player">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width">
+  <meta name="referrer" content="no-referrer">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">           
+    <link href="https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/clpr.css" rel="stylesheet" crossorigin="anonymous">           
+<title> Aliwix Clappr Player </title>
+   <script data-n-head="ssr" src="https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/ua-clpr.js"></script> 
+   <script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/p2p-media-loader-core@latest/build/p2p-media-loader-core.min.js"></script>
+   <script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@latest/build/p2p-media-loader-hlsjs.min.js"></script> 
+   <script data-n-head="ssr" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script> 
+   <script data-n-head="ssr" src="https://cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script> 
+</head>
+<body>
+   <div id="player">
+   <script>
+   function get(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
+   var n="[\\?$]"+e+"=([^$#]*)",
+   l=new RegExp(n),
+   c=l.exec(window.location.href);
+   return null==c?"//www.drivetv.ga/video.mp4":unescape(c[1])}
+   var link=get("src");
+   var player = new Clappr.Player(
+   {source:link,
+   plugins: [LevelSelector], 
+   baseUrl: ''http://cdn.clappr.io/latest'',
+   poster: "https://i.ytimg.com/vi/kLGBJT6j3ec/maxresdefault.jpg",autoPlay:true,
+   position: "bottom-left",
+   watermark: "https://github.com/HeNy007/AliwixPlayer/raw/main/2.png",
+   height:"100%",
+   width:"100%",parentId: "#player",mediacontrol: {seekbar: "#ff1d04", buttons: "#ff1d04"},
+   });
+   </script>
+   </div>
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+<!--
+http://raw.githack.com/HeNy007/AliwixPlayer/master/clapper.html?src=http://flusonic-5.platinum-tv.com/france2/index.m3u8?token=test
+-->
