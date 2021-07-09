@@ -1,9 +1,9 @@
 
-.media-control:before {text-shadow: 1px 1px 2px #000; font-size: 1vw;color:#fff;position: absolute;
+.media-control:before {text-shadow: 1px 1px 2px #000; font-size: 1.5vw;color:#fff;position: absolute;
 right: 0;bottom: 0;left: 0; z-index: 0;display: flex;
 flex-direction: column;  justify-content: center; align-items: center;
 pointer-events: none; font-family: 'Cairo', sans-serif; font-weight: bold; text-shadow: 0 3px 3px #000;
-content: "مجموعة أليويكس للبث المباشر"; height: -25%;}
+content: "مجموعة أليويكس للبث المباشر"; height: 100px;}
 /* arabic */
 @font-face {
   font-family: 'Cairo';
