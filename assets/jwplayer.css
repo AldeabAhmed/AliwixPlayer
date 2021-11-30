@@ -9,3 +9,9 @@ flex-direction: column;  justify-content: center; align-items: center;
 
 pointer-events: none; font-family: 'Cairo', sans-serif; font-weight: bold; text-shadow: 0 3px 3px #000;
     content: "aliwixplay.netlify.app| أليويكس للبث المباشر"; height: 25%;}
+
+
+.jw-button-image {
+	background-size: 45%;
+	opacity: 1;
+}
