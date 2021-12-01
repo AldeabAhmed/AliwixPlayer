@@ -1,28 +1,23 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title> 007 Player </title><style type="text/css">
-html,body {height:100%; width:100%; padding:0px; margin:0px;}
-#container{position:fixed; padding:0px; margin:0px;}
-
-
+<title> 007 Player </title>
+<style type="text/css">
+.container {
+	margin: 20px auto;
+	width: 100%;
+}
 video {
-	height:100%; width:100%; padding:0px; margin:0px;
-	}
+	width: 100%;
+}
 </style> 
 </head><body>
-<div id="app"></div>
+<div class='container'>
 <span class="dots"></span>
-<video controls="" crossorigin="hhh" playsinline="ggg"></video></div>
+<video controls="" crossorigin="" playsinline=""></video></div>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script>
 <script type="text/javascript">
-function gup(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
-var n="[\\?&]"+e+"=([^&#]*)",
-l=new RegExp(n),
-c=l.exec(window.location.href);
-return null==c?"https://heny007.github.io/2m.m3u8":unescape(c[1])}
-var video=gup("src");
-var iptv=(video);
 document.addEventListener('DOMContentLoaded', () => {
-const controls = ['play-large','play','mute','volume','captions','settings', 'download' ,'fullscreen'];
-const source = iptv ;
+const controls = ['play-large','play','mute','volume','captions','settings','fullscreen'];
+const source = 'https://cnn-cnninternational-1-eu.rakuten.wurl.com/manifest/playlist.m3u8';
 const video = document.querySelector('video');       
 // const player = Plyr.setup('video', {controls, captions: {active: false, update: false, language: 'auto'}});
 const defaultOptions = {controls,captions: {active: true, update: false, language: 'auto'}};
