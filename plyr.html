@@ -1,0 +1,69 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title> 007 Player </title><style type="text/css">
+html,body {height:100%; width:100%; padding:0px; margin:0px;}
+#container{position:fixed; padding:0px; margin:0px;}
+
+
+video {
+	height:100%; width:100%; padding:0px; margin:0px;
+	}
+</style> 
+</head><body>
+<div id="app"></div>
+<span class="dots"></span>
+<video controls="" crossorigin="hhh" playsinline="ggg"></video></div>
+<script type="text/javascript">
+function gup(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
+var n="[\\?&]"+e+"=([^&#]*)",
+l=new RegExp(n),
+c=l.exec(window.location.href);
+return null==c?"https://heny007.github.io/2m.m3u8":unescape(c[1])}
+var video=gup("src");
+var iptv=(video);
+document.addEventListener('DOMContentLoaded', () => {
+const controls = ['play-large','play','mute','volume','captions','settings', 'download' ,'fullscreen'];
+const source = iptv ;
+const video = document.querySelector('video');       
+// const player = Plyr.setup('video', {controls, captions: {active: false, update: false, language: 'auto'}});
+const defaultOptions = {controls,captions: {active: true, update: false, language: 'auto'}};
+
+  if (Hls.isSupported()) {
+   
+    const hls = new Hls();
+    hls.loadSource(source);
+    hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+
+      // Transform available levels into an array of integers (height values).
+      const availableQualities = hls.levels.map((l) => l.height)
+
+      // Add new qualities to option
+      defaultOptions.quality = {
+        default: availableQualities[0],
+        options: availableQualities,
+        // this ensures Plyr to use Hls to update quality level
+        forced: true,        
+        onChange: (e) => updateQuality(e),
+      }
+
+      // Initialize here
+      const player = new Plyr(video, defaultOptions);
+    });
+    hls.attachMedia(video);
+    window.hls = hls;
+  } else {
+ 
+    const player = new Plyr(video, defaultOptions);
+  }
+
+  function updateQuality(newQuality) {
+    window.hls.levels.forEach((level, levelIndex) => {
+      if (level.height === newQuality) {
+        console.log("Found quality match with " + newQuality);
+        window.hls.currentLevel = levelIndex;
+      }
+    });
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script>
+</body></html>
