@@ -1,4 +1,4 @@
-/* HeNy007 @fb 007heny */
+
         var primaryCookie = 'html5';
         var cookies = document.cookie.split(";");
         for (i=0; i < cookies.length; i++) {
