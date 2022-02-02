@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8">
+<title>Aliwix Video Player</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style type="text/css">
+    body {
+      margin: 0;
+      font-family: Roboto;
+      background-color: #262626;
+    }
+
+    .q-audio {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      justify-content: center;
+    }
+
+    .q-hls .plyr {
+      height: 100%;
+    }
+
+    .plyr__menu__container {
+      max-height: calc(100vh - 100% - 20px);
+      overflow-y: auto;
+    }
+
+    .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #000;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .loader {
+      border: 4px solid #000;
+      border-top: 4px solid #fff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin .75s linear infinite;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .plyr--video:before{font-family: Changa,"Segoe UI";font-size:2.5vw;color:#fff;position:absolute;right:0;bottom:0;left:0;z-index:1;display:flex;flex-direction:column;justify-content:center;align-items:center;pointer-events:none;background:linear-gradient(transparent,);height:150px}
+.plyr,.plyr__video-wrapper{width:100% !important;height:100% !important}
+.plyr audio,.plyr video{height:100%!important}
+  
+
+
+html,body {height:100%; width:100%; padding:0px; margin:0px; }
+.players{position:fixed; height:100%;width:100%; padding:0px; margin:0px;}
+video{    /* object-fit: fill; */;}
+
+	.dots {content: '';width: 10px;height: 10px;background: #fb6f13;position: absolute;z-index: 1;border-radius: 50%;margin:10px}
+	.dots::before {content: '';position: relative;display: block;width: 300%;height: 300%;box-sizing: border-box;margin-left: -100%;margin-top: -100%;border-radius: 45px;background-color: #fb6f13;animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;}
+	.dots::after {content: '';position: absolute;left: 0;top: 0;display: block;width: 100%;height: 100%;border-radius: 15px;box-shadow: 0 0 8px rgba(0,0,0,0.3);animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -0.4s infinite}
+	.item-post .post-body {font-family: 'Inter', sans-serif;font-size: 15.3px}
+	.plyr {--plyr-color-main: #ff6600;box-shadow: 0px 0px 19px rgba(30,30,30,.1);border-radius: 0;}
+	.plyr__volume {min-width: 190px}
+	#idch {right: 2%;position: fixed;/bottom: 12.9%/}
+	.plyr__video-wrapper::before {position:absolute;top:45%;z-index:2;opacity:.7;content:'';height:100%;width:100px;background:url('https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/plyr/aliwixteamlogo.png') no-repeat;background-size:100px auto,auto;right:5%;}
+	.plyr_controlsitem.plyr_volume::before {content: 'LIVE';font-weight: 900;margin-right: 5px}
+	@keyframes pulse-ring {
+	0% {
+	transform: scale(0.33);
+	}
+	100%, 100% {
+	opacity: 0;
+	}
+	}
+	@keyframes pulse-dot {
+	0% {
+	transform: scale(0.8);
+	}
+	100% {
+	transform: scale(1);
+	}
+	100% {
+	transform: scale(0.8);
+	}
+	}
+	
+	
+	</style>
+	<link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
+	
+</head><body>
+<div class="players">
+<span class="dots"></span>
+<video id="video" width="100%" height="100%" controls="" crossorigin="" playsinline=""></video>
+</div>
+<script type="text/javascript">
+function gup(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
+var n="[\\?&]"+e+"=([^&#]*)",
+l=new RegExp(n),
+c=l.exec(window.location.href);
+return null==c?"https://d3awnlgqz0szay.cloudfront.net/out/v1/b841c366cbe540e6a106c3ba83e5c8d6/index.m3u8":unescape(c[1])}
+var video=gup("src");
+var iptv=(video);
+document.addEventListener('DOMContentLoaded', () => {
+const controls = ['play-large','play','mute','volume','captions','download', 'settings','fullscreen'];
+const source = iptv ;
+const video = document.querySelector('video');       
+// const player = Plyr.setup('video', {controls, captions: {active: false, update: false, language: 'auto'}});
+const defaultOptions = {controls,captions: {active: true, update: false, language: 'auto'}};
+
+  if (Hls.isSupported()) {
+   
+    const hls = new Hls();
+    hls.loadSource(source);
+    hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+
+      // Transform available levels into an array of integers (height values).
+      const availableQualities = hls.levels.map((l) => l.height)
+
+      // Add new qualities to option
+      defaultOptions.quality = {
+        default: availableQualities[0],
+        options: availableQualities,
+        // this ensures Plyr to use Hls to update quality level
+        forced: true,        
+        onChange: (e) => updateQuality(e),
+      }
+
+      // Initialize here
+      const player = new Plyr(video, defaultOptions);
+    });
+    hls.attachMedia(video);
+    window.hls = hls;
+  } else {
+ 
+    const player = new Plyr(video, defaultOptions);
+  }
+
+  function updateQuality(newQuality) {
+    window.hls.levels.forEach((level, levelIndex) => {
+      if (level.height === newQuality) {
+        console.log("Found quality match with " + newQuality);
+        window.hls.currentLevel = levelIndex;
+      }
+    });
+  }
+});
+
+$(window).on("orientationchange", () => {
+   if(screen.width > screen.height){
+      // change to landscape
+   } else {
+      // change to portrait
+   }
+});
+
+
+
+
+
+
+
+</script>
+<script src="https://cdn.plyr.io/3.6.9/plyr.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script>
+
+
+</body></html>
