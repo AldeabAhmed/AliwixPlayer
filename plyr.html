@@ -1,11 +1,82 @@
-<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8">
+<!DOCTYPE html><html lang="en">
+<head> 
+<meta charset="UTF-8">
 <title>Aliwix Video Player</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<style type="text/css">html,body {height:100%; width:100%; padding:0px; margin:0px; }
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<style type="text/css">
+    body {
+     margin: 0;
+      font-family: Roboto;
+      background-color: #262626;
+    }
+
+    .q-audio {
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      justify-content: center;
+    }
+
+    .q-hls .plyr {
+      height: 100vh;
+    }
+
+    .plyr__menu__container {
+      max-height: calc(100vh - 100% - 20px);
+      overflow-y: auto;
+    }
+
+    .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #000;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .loader {
+      border: 4px solid #000;
+      border-top: 4px solid #fff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin .75s linear infinite;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .plyr--video:before{font-family: Changa,"Segoe UI";font-size:2.5vw;color:#fff;position:absolute;right:0;bottom:0;left:0;z-index:1;display:flex;flex-direction:column;justify-content:center;align-items:center;pointer-events:none;background:linear-gradient(transparent,);height:150px}
+.plyr,.plyr__video-wrapper{width:100% !important;height:100% !important}
+.plyr audio,.plyr video{height:100%!important}
+  
+
+
+html,body {height:100%; width:100%; padding:0px; margin:0px; }
 .players{position:fixed; height:100%;width:100%; padding:0px; margin:0px;}
-  video{object-fit:fill;}
+video{  object-fit: fill; }
 
 	.dots {content: '';width: 10px;height: 10px;background: #fb6f13;position: absolute;z-index: 1;border-radius: 50%;margin:10px}
 	.dots::before {content: '';position: relative;display: block;width: 300%;height: 300%;box-sizing: border-box;margin-left: -100%;margin-top: -100%;border-radius: 45px;background-color: #fb6f13;animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;}
@@ -13,9 +84,9 @@
 	.item-post .post-body {font-family: 'Inter', sans-serif;font-size: 15.3px}
 	.plyr {--plyr-color-main: #ff6600;box-shadow: 0px 0px 19px rgba(30,30,30,.1);border-radius: 0;}
 	.plyr__volume {min-width: 190px}
-	#idch {right: 2%;position: fixed;/*bottom: 12.9%*/}
+	#idch {right: 2%;position: fixed;/bottom: 12.9%/}
 	.plyr__video-wrapper::before {position:absolute;top:45%;z-index:2;opacity:.7;content:'';height:100%;width:100px;background:url('https://raw.githack.com/HeNy007/AliwixPlayer/main/assets/plyr/aliwixteamlogo.png') no-repeat;background-size:100px auto,auto;right:5%;}
-	.plyr__controls__item.plyr__volume::before {content: 'LIVE';font-weight: 900;margin-right: 5px}
+	.plyr_controlsitem.plyr_volume::before {content: 'LIVE';font-weight: 900;margin-right: 5px}
 	@keyframes pulse-ring {
 	0% {
 	transform: scale(0.33);
@@ -37,28 +108,48 @@
 	}
 	
 	
+	
+	.preloader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background: #130014 url("https://github.com/HeNy007/HeNy007.github.io/raw/main/img/coverjwplayer.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	background-attachment: fixed;
+	}
+	
+	
 	</style>
 	<link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
 	
 </head><body>
+<div class="preloader"></div>
 <div class="players">
 <span class="dots"></span>
-<video id="video" width="100%" height="100%" controls="" crossorigin="" playsinline=""></video>
+<video id="video" poster="" width="100%" height="100%" controls="" crossorigin=""  playsinline=""><source 
+        type="application/x-mpegURL" 
+        src="https://heny007.github.io/hls/download/001.mp4">
+    </video>
 </div>
 <script type="text/javascript">
 function gup(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
 var n="[\\?&]"+e+"=([^&#]*)",
 l=new RegExp(n),
 c=l.exec(window.location.href);
-return null==c?"https://heny007.github.io/2m.m3u8":unescape(c[1])}
+return null==c?"https://heny007.github.io/hls/download/001.mp4":unescape(c[1])}
 var video=gup("src");
 var iptv=(video);
 document.addEventListener('DOMContentLoaded', () => {
-const controls = ['play-large','play','mute','volume','captions','download', 'settings','fullscreen'];
+const controls = ['play-large','play','progress','current-time','captions','download', 'settings','fullscreen' ];
 const source = iptv ;
-const video = document.querySelector('video');       
-// const player = Plyr.setup('video', {controls, captions: {active: false, update: false, language: 'auto'}});
-const defaultOptions = {controls,captions: {active: true, update: false, language: 'auto'}};
+// const video = document.querySelector('video');       
+ const player = Plyr.setup('video', {controls, captions: {active: false, update: false, language: 'auto'}});
+// const defaultOptions = {controls,captions: {active: true, update: false, language: 'auto'}};
 
   if (Hls.isSupported()) {
    
@@ -107,8 +198,9 @@ $(window).on("orientationchange", () => {
 });
 
 
-
-
+$(window).on("load", function() {
+      $(".preloader").fadeOut("slow")
+    })
 
 
 
