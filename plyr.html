@@ -119,10 +119,11 @@ video{  object-fit: fill; }
 	background: #130014 url("https://github.com/HeNy007/HeNy007.github.io/raw/main/img/coverjwplayer.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-size: contain;
+	background-size: cover;
 	background-attachment: fixed;
 	}
 	
+	#dlna { position: fixed; z-index: 99999999; right: 25px; text-align: center; border-radius: 50%; cursor: pointer; bottom: 67px; } #tme_message { position: absolute; bottom: 0; right: -10px; width: 300px; padding: 10px; } #dlna_message:after, #dlna_message:before { content: ' ' ; position: absolute; bottom: -21px; right: 23px; border-style: solid; height: 0; width: 0; border-width: 10px; border-color: transparent; } #dlna_message p { margin: 0px 0; font-size: 12px; color: #8e8e8e; text-align: right; } .clossalert { position: absolute; right: 0px; font-size: 14px; border-radius: 50%; width: 30px; height: 30px; top: -17px; ; border: unset !important; } #dlna_message a { margin: 6px 4px; font-weight: bold; color: #FFF; background: #0088cc; border-radius: 6px; display: inline-block; padding: 10px; text-decoration: none; } .player-poster[data-poster] { background-size: 100% !important; }
 	
 	</style>
 	<link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css" />
@@ -136,20 +137,27 @@ video{  object-fit: fill; }
         src="https://heny007.github.io/hls/download/001.mp4">
     </video>
 </div>
+<div id="dlna"> 
+    <div id="dlna_message"> 
+     <button class="clossalert" onclick="document.getElementById(&quot;dlna&quot;).style.display=&quot;none&quot;;">X</button> 
+     <p><a onClick="dlna()" rel="nofollow" role="button" target="_blank"> (DLNA) يمكنك نقل البث الى تلفازك عبر خاصية</a></p> 
+    </div> 
+   </div> 
 <script type="text/javascript">
+function dlna(){if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){window.location=a}else{location.href="wvc-x-callback://open?url="+iptv+"&secure_uri=true"}};
 function gup(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
 var n="[\\?&]"+e+"=([^&#]*)",
 l=new RegExp(n),
 c=l.exec(window.location.href);
-return null==c?"https://heny007.github.io/hls/download/001.mp4":unescape(c[1])}
+return null==c?"https://heny007.github.io/hls/download/go1.m3u8":unescape(c[1])}
 var video=gup("src");
 var iptv=(video);
 document.addEventListener('DOMContentLoaded', () => {
-const controls = ['play-large','play','progress','current-time','captions','download', 'settings','fullscreen' ];
+const controls = ['restart', 'play-large','play','progress','current-time','captions', 'settings','fullscreen' ];
 const source = iptv ;
-// const video = document.querySelector('video');       
- const player = Plyr.setup('video', {controls, captions: {active: false, update: false, language: 'auto'}});
-// const defaultOptions = {controls,captions: {active: true, update: false, language: 'auto'}};
+const video = document.querySelector('video');       
+ //const player = Plyr.setup('video', {controls, captions: {active: false, update: false, language: 'auto'}});
+const defaultOptions = {controls,captions: {active: true, update: false, language: 'auto'}};
 
   if (Hls.isSupported()) {
    
