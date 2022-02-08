@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8">
+<title>Aliwix Video Player</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="copyright" content="HeNy007">
+<meta property="og:url" content="https://aliwixplay.netlify.app/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="تطبيق أليويكس بلاي ‫-‬ Aliwix Play" />
+<meta property="og:description" content="أليويكس تي في - التطبيق التونسي المجاني الأول لمشاهدة المئات من القنوات التلفزيونية الفضائية والمشفرة بالإضافة لمكتبة منوعة من الأفلام و المسلسلات التونسية و العالمية العربية والأجنبية المترجمة بجودة عالية وبدون تقطيع بواسطة هاتفك الذكي أو باستخدام جهازك اللوحي أو " التلفزيون الذكي" مجاناً Aliwix Play, Aliwix Play apk, تحميل تطبيق أليويكس بلاي">
+<meta name="keywords" content="apk,Aliwix Play,Aliwix,tv,تطبيق أليويكس بلاي،أليويكس تي في،تحميل أليويكس بلاي">
+<meta property="og:image" content="app/assets/aliwixplay.jpg" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Aliwix Video Player</title>
+<!-- DNS Prefetech --> 
+  <link href="https://www.blogger.com" rel="dns-prefetch">
+  <link href="https://script.google.com" rel="dns-prefetch">
+  <link href="https://fonts.gstatic.com" rel="dns-prefetch">
+  <link href="https://fonts.googleapis.com" rel="dns-prefetch">
+  <link href="https://1.bp.blogspot.com" rel="dns-prefetch">
+  <link href="https://2.bp.blogspot.com" rel="dns-prefetch">
+  <link href="https://3.bp.blogspot.com" rel="dns-prefetch">
+  <link href="https://4.bp.blogspot.com" rel="dns-prefetch">
+  <link href="https://pagead2.googlesyndication.com" rel="dns-prefetch">
+  <link href="https://accounts.google.com" rel="dns-prefetch">
+  <link href="https://resources.blogblog.com" rel="dns-prefetch">
+  <link href="https://www.google.com" rel="dns-prefetch">
+  <link href="https://connect.facebook.net" rel="dns-prefetch">
+  <link href="https://www.facebook.com" rel="dns-prefetch"> 
+<!-- Required --> 
+  <meta content="" property="fb:pages"> 
+  <meta content="" property="fb:app_id"> 
+  <meta content="" property="fb:admins"> 
+  <meta content="" name="twitter:site"> 
+  <meta content="" name="twitter:creator"> 
+ <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+ <meta http-equiv="Pragma" content="no-cache" />
+ <meta http-equiv="Expires" content="0" />
+ <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style type="text/css">html,body {height:100%; width:100%; padding:0px; margin:0px; }
+.players{position:fixed; height:100%;width:100%; padding:0px; margin:0px;}
+video{object-fit:fill;}
+</style></head><body>
+<div id="ad_asd" class="slide_in" style="display: none;">
+   <span title="Close" id="close_ad">X</span>
+   <div class="center_ad">
+   <iframe src="https://ad2bitcoin.com/ad.php?ref=heny007&width=300" marginwidth="0" marginheight="0" width="300" height="250" scrolling="no" border="0" frameborder="0"></iframe></div>
+  </div>
+<div class="preloader"></div>
+<div class="players">
+<meta content='no-referrer' name='referrer' />
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<video id="video" width="100%" height="100%" controls></video>
+<script type="text/javascript">
+function gup(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
+var n="[\\?$]"+e+"=([^$#]*)",
+l=new RegExp(n),
+c=l.exec(window.location.href);
+return null==c?"https://heny007.github.io/hls/download/001.mp4":unescape(c[1])}
+var link=gup("src");
+        var video = document.getElementById('video');
+        if(Hls.isSupported()) {
+          var hls = new Hls();
+          hls.loadSource(link);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            video.play();
+        });
+      }
+          else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = 'https://heny007.github.io/hls/download/001.mp4';
+          video.addEventListener('loadedmetadata',function() {
+            video.play();
+          });
+        }
+</script></div>
+<style>
+#dlna { position: fixed; right: 25px; text-align: center; border-radius: 50%; cursor: pointer; bottom: 30px; } .clossalert { position: absolute; right: 0px; font-size: 14px; border-radius: 50%; width: 30px; height: 30px; top: -20px; ; border: unset !important; } 
+ 
+.circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+.circle svg {
+  fill: none;
+  stroke: #8a3ab9;
+  stroke-linecap: round;
+  stroke-width: 3;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: stroke-draw 6s ease-out infinite alternate;
+}
+.circle img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  border-radius: 50%;
+}
+@keyframes stroke-draw {
+  from {
+    stroke: #8a3ab9;
+    stroke-dasharray: 1;
+  }
+  to {
+    stroke: #cd486b;
+    transform: rotate(180deg);
+    stroke-dasharray: 8;
+  }
+}
+
+
+.c-slider {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+}
+
+.c-slide {
+   display: flex;
+  flex-direction: column;
+ 
+  justify-content: space-between;
+  flex: 2;
+  
+}
+
+
+*,:after,:before{box-sizing:border-box}.center_ad{width:300;height:250;display:flex;align-items:center;justify-content:center;text-align:center}#close_ad{right:0;top:1px;float:right;z-index:9999999999;position:absolute;padding:2px;font-weight:200;border-radius:2px;border:1px solid #fff;background:red;color:#fff;text-align:center;cursor:pointer;width:34px;height:34px;line-height:30px;font-size:18px}#close_ad:hover{color:#000;opacity:.9;background:#4da368}@media only screen and (max-width: 600px){#close_ad{width:38px;height:38px;font-size:30px}}#ad_asd{position:fixed;width:300;height:250;top:50%;left:50%;margin:-125px 0 0 -150px;z-index:999999999;background-color:#1b1b1b;border:1px solid #666;border-radius:2px;-webkit-border-radius:2px;-moz-border-radius:2px;-khtml-border-radius:2px;transform:translateY(-100%);-webkit-transform:translateY(-100%)}.slide_in{animation:slide_in .9s forwards;-webkit-animation:slide_in .9s forwards}.slide_out{animation:slide_out .9s forwards;-webkit-animation:slide_out .9s forwards}@keyframes slide_in{100%{transform:translateY(0%)}}@-webkit-keyframes slide_in{100%{-webkit-transform:translateY(0%)}}@keyframes slide_out{0%{transform:translateY(0%)}100%{transform:translateY(250%)}}@-webkit-keyframes slide_out{0%{-webkit-transform:translateY(0%)}100%{-webkit-transform:translateY(250%)}}
+.preloader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background: #130014 url("https://github.com/HeNy007/HeNy007.github.io/raw/main/img/coverjwplayer.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+	}
+</style>
+<div id="dlna"> 
+    <div id="dlna_message"> 
+     <button class="clossalert" onclick="document.getElementById(&quot;dlna&quot;).style.display=&quot;none&quot;;">❌</button> 
+  <div class="c-slider">
+      <div class="c-slide">
+     <div onClick="mx()" class="circle">
+    <img src="https://cdn.theorg.com/82efa49c-c459-4b71-83fb-68b9da555349_thumb.png" />
+     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="enable-background:new -580 439 577.9 194;"
+     xml:space="preserve">  
+     <circle cx="50" cy="50" r="40"  />
+     </svg>
+     </div>
+     
+     </div>
+     <div class="c-slide">
+     <div onClick="wuffy()" class="circle">
+     <img src="https://scontent.ftun1-2.fna.fbcdn.net/v/t1.6435-9/fr/cp0/e15/q65/72368682_110561740414824_5464656146772000768_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=110474&efg=eyJpIjoidCJ9&_nc_ohc=zrYFOkPGOpEAX8WB2r_&_nc_ht=scontent.ftun1-2.fna&oh=00_AT8FkMExU3AmThOt5NWyN1YPAH5UhhbiUWX_w1UACDN07Q&oe=6226AA47" alt="" />
+     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="enable-background:new -580 439 577.9 194;"
+     xml:space="preserve">  
+     <circle cx="50" cy="50" r="40" />
+     </svg>
+     </div>
+     
+     </div>
+     <div class="c-slide">
+     <div onClick="dlna()" class="circle">
+     <img src="https://play-lh.googleusercontent.com/4xUYWX2Z6LhCeyxjxfPl4d9v8DNGXiXJvR4gHcgTR3YCVoarhhGdfroTp1QvYI8pIQ" alt="" />
+     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="enable-background:new -580 439 577.9 194;"
+     xml:space="preserve">  
+     <circle cx="50" cy="50" r="40" />
+     </svg>
+     </div>
+     
+     </div>
+     
+   </div></div>
+   <script>
+   // externalplayer
+   function dlna(){if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){window.location=link}else{location.href="wvc-x-callback://open?url="+link+"&secure_uri=true"}};
+   function wuffy(){if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){window.location=link}else{location.href="intent://"+btoa(link)+"#Intent;scheme=xmtv;package=co.wuffy.player;end"}};
+   function mx(){if(navigator.userAgent.match(/iPhone|iPad|iPod/i)){window.location=link}else{location.href="intent:"+link+"#Intent;package=com.mxtech.videoplayer.ad;end"}};
+  
+  //ads
+  var elem=document.getElementById("close_ad");elem.addEventListener("click touchstart",handler,!1);elem.addEventListener("click",handler,!1);function handler(b){var a=document.getElementById("ad_asd");b=a.classList.contains("slide_in");setTimeout(function(){a.parentNode.removeChild(a)},500);a.setAttribute("class",b?"slide_out":"slide_in")};setTimeout(function(){document.getElementById("ad_asd").style.display="block"},3E3);
+ 
+ $(window).on("load", function() {
+ $(".preloader").fadeOut("slow")
+ })
+   </script >
+</body></html>
