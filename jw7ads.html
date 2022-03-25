@@ -1,18 +1,17 @@
-
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
-<title> 007 Player </title><style type="text/css">
-html,body {height:100%; width:100%; padding:0px; margin:0px;}
-#app{position:fixed; padding:0px; margin:0px;}
-.jw-controls:before {text-shadow: 1px 1px 2px #000; font-size: 2vw;color:#fff;position: absolute;
+<!DOCTYPE html><html><body>
+<script src="http://oui9mobi.com/fichiers/players/flsh_i_a_auto/jwplayer.js"></script>
+<script type="text/javascript">jwplayer.key = "WbtWzGvcRNi6Tk+gtKldIbx+nn6lXZFvKiaO2g==";</script> 
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Harmattan&display=swap');
+html {height: 100%; overflow: hidden;}#flashcontent {height: 100%;}
+body {height: 100%; margin: 0; padding: 0; background-color: #000;}
+.jw-controls:before {text-shadow: 1px 1px 2px #000; font-size: 2.5vw;color:green ;position: absolute;
 right: 0;bottom: 0;left: 0; z-index: 0;display: flex;
 flex-direction: column;  justify-content: center; align-items: center;
-pointer-events: none; font-family:Arial,Helvetica,sans-serif; font-weight: bold; text-shadow: 0 3px 3px #000;
-    content: "www.aliwix.ovh | أليويكس للبث المباشر"; height: 25%;}
+pointer-events: none; font-family:Harmattan,sans-serif; font-weight: bold; text-shadow: 0 3px 3px #000;
+    content: "www.aliwix.ovh | أليويكس للبث المباشر"; height : 25%;}
 </style>
-<script src="https://raw.githubusercontent.com/kicktv/html-editor/gh-pages/jwplayer7/jwplayer.js"></script>
-<script type="text/javascript">jwplayer.key="XYS/ica6YQUMq9rC6J2E77obUFoIPLeM";</script>
-</head><body><div id="app"></div>
-<script type="text/javascript">
+<div id="player">Loading the player...</div><script>
 function gup(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
 var n="[\\?&]"+e+"=([^&#]*)",
 l=new RegExp(n),
@@ -20,10 +19,14 @@ c=l.exec(window.location.href);
 return null==c?"https://heny007.github.io/2m.m3u8":unescape(c[1])}
 var video=gup("src");
 var iptv=(video);
-jwplayer("app").setup({file:iptv,
-title: 'HeNy007',autostart: "false",width: "100%",height: "100%",
-tag:"HeNy007",title:"HeNy007",autostart:"true",stretching:"exactfit",autostretch:"true",
-logo:{position:"top-left",margin:"30",file:"https://a.top4top.io/p_894xgcnv3.jpg",height:"30""},
-advertising:{client:"vast",tag:"assets/jwads.xml"},
-flashplayer:"https://raw.githack.com/HeNy007/HeNy-Ben-Hamed/master/today-matches/jwplayer.flash.swf",tracks:{file:"thumbnails.vtt",kind:"thumbnails"} });
+jwplayer("player").setup({
+file:iptv,rtmp:{bufferlength:.5},
+androidhls:!0,
+// image:"#",
+// logo:{position:"top-left",margin:"30",file:"https://a.top4top.io/p_894xgcnv3.jpg",height:"30""},
+width:"100%",height:"100%",
+stretching:"exactfit",autostretch:"true",
+advertising:{client:"vast",tag:"https://cdn.jsdelivr.net/gh/HeNy007/AliwixPlayer/assets/jwads.xml"},
+flashplayer:"https://raw.githack.com/HeNy007/HeNy-Ben-Hamed/master/today-matches/jwplayer.flash.swf",tracks:{file:"thumbnails.vtt",kind:"thumbnails"}, 
+primary:"flash",autostart:"true",aboutlink:""});
 </script></body></html>
