@@ -12,11 +12,11 @@
 <Tracking event="progress" offset="05"> </Tracking>
 </TrackingEvents>
 <VideoClicks>
-<ClickThrough>https://www.youtube.com/watch?v=bwWYkp4LfcM</ClickThrough>
-<ClickTracking>https://jumptv.github.io/img/mbc3.png</ClickTracking>
+<ClickThrough>https://youtu.be/tm3EVRykbW0</ClickThrough>
+<ClickTracking>https://youtu.be/elQqZ_jXhMs</ClickTracking>
 </VideoClicks>
 <MediaFiles>
-<MediaFile delivery="progressive" type="video/mp4">https://kicktv.github.io/html-editor/video.mp4</MediaFile>
+<MediaFile delivery="progressive" type="video/mp4">https://youtu.be/KwCpbYA1QEY</MediaFile>
 </MediaFiles>
 </Linear>
 </Creative>
