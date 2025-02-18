@@ -2,7 +2,7 @@ function gup(e){e=e.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]");
 var n="[\\?&]"+e+"=([^&#]*)",
 l=new RegExp(n),
 c=l.exec(window.location.href);
-return null==c?"https://heny007.github.io/HeNy-Ben-Hamed/today-matches/aliwix.mp4":unescape(c[1])}
+return null==c?"https://heny007.github.io/HeNy-Ben-Hamed/today-matches/aliwix .mp4":unescape(c[1])}
 var video=gup("src");
 var iptv=(video);
 var playerInstance = jwplayer("app").setup({file:iptv,
