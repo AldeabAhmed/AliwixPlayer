@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="iDEB Sports 4K">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://raw.githack.com/AldeabAhmed/AliwixPlayer/refs/heads/main/assets/jwplayerest.css" rel="stylesheet">
+
+    <title>iDEB Sports 4K</title>
+
+    <script src="https://raw.githack.com/HeNy007/HeNy-Ben-Hamed/master/today-matches/jwplayer8.js"></script>
+    <script>jwplayer.key = "AEDNFtstbMiaUEt6n5r8diauF5pJeOwBKZuGgcfopzQ=";</script>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #app {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="loader">جاري التحميل...</div>
+    </div>
+
+    <script>
+        // تعطيل أدوات المطور
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = function(e) {
+            if (e.keyCode === 123) return false;
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) return false;
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) return false;
+            if (e.ctrlKey && e.keyCode === 85) return false;
+        };
+
+        async function decryptStream(encryptedUrl) {
+            try {
+                const response = await fetch('/proxy', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ url: encryptedUrl })
+                });
+
+                const blob = await response.blob();
+                return URL.createObjectURL(blob);
+            } catch (error) {
+                console.error('Decryption error:', error);
+                return null;
+            }
+        }
+
+        async function initPlayer() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const encryptedSrc = urlParams.get('src');
+
+            if (!encryptedSrc) {
+                console.error('No source provided');
+                return;
+            }
+
+            document.querySelector('.loader').style.display = 'block';
+
+            try {
+                const decryptedUrl = await decryptStream(encryptedSrc);
+
+                if (!decryptedUrl) {
+                    throw new Error('Failed to decrypt stream');
+                }
+
+                jwplayer("app").setup({
+                    file: decryptedUrl,
+                    title: "Ahmed Aldeab",
+                    autostart: true,
+                    width: "100%",
+                    height: "100%",
+                    stretching: "uniform",
+                    logo: {
+                        position: "bottom-left",
+                        margin: "25",
+                        file: "https://raw.githack.com/AldeabAhmed/AliwixPlayer/main/loko.png",
+                        height: "25"
+                    },
+                    hlshtml: true,
+                    drm: {
+                        widevine: {
+                            url: decryptedUrl
+                        }
+                    }
+                });
+
+                jwplayer().on('ready', () => {
+                    document.querySelector('.loader').style.display = 'none';
+                });
+
+                jwplayer().on('error', () => {
+                    alert('حدث خطأ في تحميل البث');
+                });
+
+            } catch (error) {
+                console.error('Player initialization error:', error);
+                document.querySelector('.loader').style.display = 'none';
+                alert('فشل تشغيل البث');
+            }
+        }
+
+        // بدء التشغيل عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', initPlayer);
+    </script>
+</body>
+</html>
